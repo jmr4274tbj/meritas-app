@@ -21,20 +21,23 @@ public class GroupeController {
 	@Autowired
 	private GroupeService groupeService;
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/groupes")
 	public List<GroupeDto> obtenirGroupe() {
 		return groupeService.obtenirTousGroupes();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/groupes")
 	@ResponseStatus(HttpStatus.CREATED)
 	public List<GroupeDto> creerGroupes(@RequestBody List<GroupeDto> groupes) {
 		return groupeService.creerGroupes(groupes);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/groupes-ajouter-etudiant/{codePermanent}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void ajouterEtudiantDansGroupes(@RequestBody List<Integer> listeGroupes,

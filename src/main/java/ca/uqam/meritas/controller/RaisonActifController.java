@@ -21,26 +21,30 @@ public class RaisonActifController {
 	@Autowired
 	private RaisonActifService raisonActifService;
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/raison-actif")
 	public List<RaisonActifDto> obtenirRaisons() {
 		return raisonActifService.obtenirTousRaisons();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/raison-actif")
 	@ResponseStatus(HttpStatus.CREATED)
 	public RaisonActifDto creerNouvelleRaison(@RequestBody RaisonActifDto raisons) {
 		return raisonActifService.creerRaisonActif(raisons);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/raison-actif-actuel")
 	public List<RaisonActifDto> obtenirRaisonsActifActuel() {
 		return raisonActifService.obtenirTousRaisonsActuel();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/raison-actif")
 	public RaisonActifDto modifierRaisonActif(@RequestBody RaisonActifDto raisons) {
 		return raisonActifService.creerRaisonActif(raisons);

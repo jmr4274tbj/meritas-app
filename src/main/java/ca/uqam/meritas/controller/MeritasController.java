@@ -20,13 +20,15 @@ public class MeritasController {
 	@Autowired
 	private MeritasService meritasService;
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/meritas")
 	public List<MeritasDto> obtenirMeritas() {
 		return meritasService.obtenirTousMeritas();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/meritas")
 	@ResponseStatus(HttpStatus.CREATED)
 	public MeritasDto creerMeritas(@RequestBody MeritasDto meritas) {

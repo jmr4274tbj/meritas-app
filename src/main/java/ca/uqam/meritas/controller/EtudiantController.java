@@ -20,20 +20,23 @@ public class EtudiantController {
 	@Autowired
 	private EtudiantService etudiantService;
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/etudiants")
 	public List<EtudiantDto> obtenirEtudiants() {
 		return etudiantService.obtenirTousEtudiants();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/etudiants")
 	@ResponseStatus(HttpStatus.CREATED)
 	public List<EtudiantDto> creerEtudiants(@RequestBody List<EtudiantDto> etudiants) {
 		return etudiantService.creerEtudiants(etudiants);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/etudiants")
 	public EtudiantDto changerEtudiantActifEnInactif(@RequestBody EtudiantDto etudiant) {
 		return etudiantService.changerEtudiantActifEnInactif(etudiant);

@@ -25,20 +25,23 @@ public class CoursController {
 	@Autowired
 	private GroupeService groupeService;
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/cours")
 	public List<CoursDto> obtenirCours() {
 		return coursService.obtenirTousCours();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/cours")
 	@ResponseStatus(HttpStatus.CREATED)
 	public List<CoursDto> creerCours(@RequestBody List<CoursDto> cours) {
 		return coursService.creerCours(cours);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins ="http://meritas-ui.s3-website.us-east-2.amazonaws.com")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/cours/{sigle}/groupes")
 	public List<GroupeDto> trouverGroupesDuCours(@PathVariable String sigle) {
 		return groupeService.trouverGroupesDuCours(sigle);
