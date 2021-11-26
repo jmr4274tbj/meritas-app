@@ -30,7 +30,7 @@ public class EtudiantService {
 		String id = etudiant.getCodePermanent();
 		etudiant.setActif(false);
 		Optional<Etudiant> etudiantOpt = etudiantRepo.findById(id);
-		if (etudiantOpt.isEmpty()) {
+		if (!etudiantOpt.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Aucun étudiant avec ce code permanent");
 		} else {
 			etudiant.setPrenom(etudiantOpt.get().getPrenom());
@@ -48,7 +48,7 @@ public class EtudiantService {
 			Etudiant etudiant = dtoVersEtudiant(dto);
 			String id = etudiant.getCodePermanent();
 			Optional<Etudiant> etudiantOpt = etudiantRepo.findById(id);
-			if (etudiantOpt.isEmpty()) {
+			if (!etudiantOpt.isPresent()) {
 				etudiant = etudiantRepo.save(etudiant);
 			} else {
 				etudiant = etudiantOpt.get();

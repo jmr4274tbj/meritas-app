@@ -36,13 +36,13 @@ public class MeritasService {
 	public MeritasDto creerMeritas(MeritasDto dto) {
 		Meritas meritas = dtoVersMeritas(dto);
 		Optional<Etudiant> etudiantOpt = etudiantRepo.findById(dto.getEtudiantCodePermanent());
-		if (etudiantOpt.isEmpty()) {
+		if (!etudiantOpt.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 					"Cet étudiant n'existe pas, alors on ne peut pas lui attribuer un méritas");
 		}
 		meritas.setRecipiendaire(etudiantOpt.get());
 		Optional<Groupe> groupeOpt = groupeRepo.findById(dto.getNumeroUniqueGroupe());
-		if (groupeOpt.isEmpty()) {
+		if (!groupeOpt.isPresent()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 					"Aucun groupe, donc on ne peut pas attribuer de méritas");
 		}

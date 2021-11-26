@@ -55,7 +55,7 @@ public class UtilisateurService {
 	public UtilisateurDto validerUtilisateur(UtilisateurDto dto) {
 		String noEmploye = dto.getNoEmploye();
 		Optional<Utilisateur> utilisateurOpt = utilisateurRepo.findById(noEmploye);
-		if (utilisateurOpt.isEmpty()) {
+		if (!utilisateurOpt.isPresent()) {
 			return null;
 		}
 		Utilisateur utilisateur = utilisateurOpt.get();

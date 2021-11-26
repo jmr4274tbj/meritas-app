@@ -30,7 +30,7 @@ public class CoursService {
 			Cours cours = dtoVersCours(dto);
 			String id = cours.getSigle();
 			Optional<Cours> coursOpt = coursRepo.findById(id);
-			if (coursOpt.isEmpty()) {
+			if (!coursOpt.isPresent()) {
 				cours = coursRepo.save(cours);
 			} else {
 				cours = coursOpt.get();
