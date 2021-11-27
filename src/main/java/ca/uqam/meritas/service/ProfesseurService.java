@@ -35,7 +35,7 @@ public class ProfesseurService {
 			Professeur professeur = dtoVersProfesseur(dto);
 			String id = professeur.getNoEmploye();
 			Optional<Professeur> profOpt = professeurRepo.findById(id);
-			if (!profOpt.isPresent()) {
+			if (profOpt.isEmpty()) {
 				professeur = professeurRepo.save(professeur);
 				UtilisateurDto utilisateur = new UtilisateurDto();
 				utilisateur.setNoEmploye(id);

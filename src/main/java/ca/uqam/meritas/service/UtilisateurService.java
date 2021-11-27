@@ -43,11 +43,11 @@ public class UtilisateurService {
 		secretaire.setMotDePasse("secretTAIRE");
 		secretaire.setRole("secretaire");
 		Optional<Utilisateur> utilisateurOpt = utilisateurRepo.findById(admin.getNoEmploye());
-		if (!utilisateurOpt.isPresent()) {
+		if (utilisateurOpt.isEmpty()) {
 			utilisateurRepo.save(admin);
 		}
 		utilisateurOpt = utilisateurRepo.findById(secretaire.getNoEmploye());
-		if (!utilisateurOpt.isPresent()) {
+		if (utilisateurOpt.isEmpty()) {
 			utilisateurRepo.save(secretaire);
 		}
 	}
@@ -55,7 +55,7 @@ public class UtilisateurService {
 	public UtilisateurDto validerUtilisateur(UtilisateurDto dto) {
 		String noEmploye = dto.getNoEmploye();
 		Optional<Utilisateur> utilisateurOpt = utilisateurRepo.findById(noEmploye);
-		if (!utilisateurOpt.isPresent()) {
+		if (utilisateurOpt.isEmpty()) {
 			return null;
 		}
 		Utilisateur utilisateur = utilisateurOpt.get();

@@ -62,7 +62,7 @@ public class GroupeService {
 			List<Etudiant> etudiants = new ArrayList<>();
 			for (String codePermanent : dto.getListeCodePermanent()) {
 				Optional<Etudiant> etudiantOpt = etudiantRepo.findById(codePermanent);
-				if (!etudiantOpt.isPresent()) {
+				if (etudiantOpt.isEmpty()) {
 					throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 							"Aucun étudiant pour ce groupe, donc on ne fait pas de groupe");
 				}
@@ -73,7 +73,7 @@ public class GroupeService {
 			groupe.setEtudiants(etudiants);
 			String noEmploye = dto.getNoEmploye();
 			Optional<Professeur> profOpt = professeurRepo.findById(noEmploye);
-			if (!profOpt.isPresent()) {
+			if (profOpt.isEmpty()) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Aucun professeur pour ce groupe, donc on ne fait pas de groupe");
 			}
@@ -82,7 +82,7 @@ public class GroupeService {
 			groupe.setProfesseur(professeur);
 			String sigle = dto.getSigle();
 			Optional<Cours> coursOpt = coursRepo.findById(sigle);
-			if (!coursOpt.isPresent()) {
+			if (coursOpt.isEmpty()) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND,
 						"Aucun cours pour ce groupe, donc on ne fait pas de groupe");
 			}
@@ -100,13 +100,13 @@ public class GroupeService {
 	@Transactional
 	public void ajouterEtudiantDansGroupes(String codePermanent, List<Integer> listeGroupes) {
 		Optional<Etudiant> etudiantOpt = etudiantRepo.findById(codePermanent);
-		if (!etudiantOpt.isPresent()) {
+		if (etudiantOpt.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Aucun étudiant avec ce code permanent.");
 		}
 		Etudiant etudiant = etudiantOpt.get();
 		for (Integer groupe : listeGroupes) {
 			Optional<Groupe> groupeConsulte = groupeRepo.findById(groupe);
-			if (!groupeConsulte.isPresent()) {
+			if (groupeConsulte.isEmpty()) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Le groupe " + groupe + " n'existe pas.");
 			}
 			Groupe groupeAjout = groupeConsulte.get();

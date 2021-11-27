@@ -38,7 +38,7 @@ public class RaisonActifService {
 	public void insererRaisonActifInitiale() {
 		for (Raison raison : Raison.values()) {
 			Optional<RaisonActif> ra = raisonActifRepo.findById(raison);
-			if (!ra.isPresent()) {
+			if (ra.isEmpty()) {
 				RaisonActif raisonActif = new RaisonActif();
 				raisonActif.setRaison(raison);
 				raisonActifRepo.save(raisonActif);
